@@ -1,7 +1,9 @@
 function Header() {
   return (
     <>
-      <h1>The Game Spot</h1>
+      <div id="bar">
+        <h1 id="logo">The Game Spot</h1>
+      </div>
     </>
   );
 }

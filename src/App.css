@@ -1,0 +1,52 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: lightblue;
+  color: rgb(46, 46, 46);
+  padding: 0;
+  margin: 0;
+}
+
+#bar {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(46, 46, 46);
+  color: white;
+}
+
+#nav-bar {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(46, 46, 46);
+  color: white;
+}
+
+#logo {
+  padding: 0;
+  margin: 0;
+}
+
+#nav-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#gamesList {
+  padding: 40px;
+  margin: 20px;
+  border-radius: 30px;
+  list-style: none;
+  display: inline-grid;
+}
+
+#gamesList li {
+  padding: 40px;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+#gamesList img {
+  border-radius: 20px;
+}

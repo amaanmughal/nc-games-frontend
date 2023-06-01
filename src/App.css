@@ -7,30 +7,40 @@ body {
   margin: 0;
 }
 
-#bar {
-  padding: 0;
-  margin: 0;
-  background-color: rgb(46, 46, 46);
-  color: white;
-}
+/*---- NAV BAR ----*/
 
 #nav-bar {
-  padding: 0;
+  padding: 1px;
   margin: 0;
   background-color: rgb(46, 46, 46);
   color: white;
-}
-
-#logo {
-  padding: 0;
-  margin: 0;
 }
 
 #nav-list {
-  padding: 0;
-  margin: 0;
   list-style: none;
+  display: grid;
+  grid-template-columns: 5fr 1fr 1fr;
 }
+
+#game {
+  color: lightblue;
+}
+
+#nav-home {
+  justify-self: left;
+}
+
+#nav-cat {
+  justify-self: right;
+  margin-top: 5px;
+}
+
+#nav-users {
+  justify-self: center;
+  margin-top: 5px;
+}
+
+/*---- GAME LIST ----*/
 
 #gamesList {
   padding: 40px;
@@ -47,6 +57,43 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
+#gamesList a:link {
+  color: black;
+  text-decoration: none;
+}
+
+#gamesList a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+#gamesList a:hover {
+  transition: 0.2s;
+  transition-timing-function: linear;
+  color: blueviolet;
+  text-decoration: none;
+}
+
+#gamesList a:active {
+  color: lightblue;
+  text-decoration: none;
+}
+
 #gamesList img {
   border-radius: 20px;
 }
+
+/*---- Single Card ----*/
+
+#single-card {
+  background-color: white;
+  margin: 40px;
+  border-radius: 40px;
+  display: inline-grid;
+  /* grid-template-columns: 1fr; */
+}
+
+/* #single-title {
+  grid-column-start: 1;
+  grid-column-end: 2;
+} */

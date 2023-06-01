@@ -3,14 +3,16 @@ function Nav() {
     <>
       <nav id="nav-bar">
         <ul id="nav-list">
-          <li>
-            <a>Games list</a>
+          <li id="nav-home">
+            <h1>
+              The <span id="game">Game</span> Spot 🃏
+            </h1>
           </li>
-          <li>
-            <a>Categories</a>
+          <li id="nav-cat">
+            <p>Categories</p>
           </li>
-          <li>
-            <a>Users</a>
+          <li id="nav-users">
+            <p>Users</p>
           </li>
         </ul>
       </nav>

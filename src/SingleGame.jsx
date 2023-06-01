@@ -4,27 +4,25 @@ import { fetchSingleReview } from "./apis/api";
 
 function SingleGame() {
   const [singleReview, setSingleReview] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { review_id } = useParams();
 
   useEffect(() => {
     fetchSingleReview(review_id).then(({ review }) => {
       setSingleReview(review);
+      setIsLoading(false);
     });
   }, []);
-  console.log(singleReview);
 
   let newDate = new Date(singleReview.created_at);
-
-  let hour = newDate.getHours();
-  let minute = newDate.getMinutes();
-  let second = newDate.getSeconds();
-  let displayTime = `${hour}/${minute}/${second}`;
 
   let year = newDate.getFullYear();
   let day = newDate.getDate();
   let month = newDate.getDay();
   let displayDate = `${day}/${month}/${year}`;
+
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <div id="single-card">
@@ -41,9 +39,7 @@ function SingleGame() {
       </center>
       <p className="single-review">{singleReview.review_body}</p>
       <p className="single-owner">created by: {singleReview.owner}</p>
-      <p className="single-created">
-        created at: {displayDate} {displayTime}
-      </p>
+      <p className="single-created">created at: {displayDate}</p>
       <p className="single-cat">category: {singleReview.category}</p>
     </div>
   );

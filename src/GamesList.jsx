@@ -24,7 +24,6 @@ function GamesList() {
             <Link to={endpoint}>
               <h3>{game.title}</h3>
             </Link>
-
             <img src={game.review_img_url} width="150px" height="150px" />
           </li>
         );

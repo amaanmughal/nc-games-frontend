@@ -119,10 +119,28 @@ body {
   margin: 40px;
   border-radius: 40px;
   display: inline-grid;
-  /* grid-template-columns: 1fr; */
 }
 
-/* #single-title {
-  grid-column-start: 1;
-  grid-column-end: 2;
-} */
+.single-button {
+  width: 30px;
+  justify-self: center;
+}
+
+#comments-title {
+  color: blueviolet;
+  justify-self: center;
+}
+
+#comments-list {
+  list-style: none;
+  display: inline-grid;
+  row-gap: 20px;
+  padding: 0;
+}
+
+#comments-list li {
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 40px;
+}

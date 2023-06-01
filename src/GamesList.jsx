@@ -13,27 +13,23 @@ function GamesList() {
     });
   }, []);
 
-  let gamesArr = gamesList;
-
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <>
-      <ul id="gamesList">
-        {gamesArr.map((game) => {
-          let endpoint = `/reviews/${game.review_id}`;
-          return (
-            <li key={game.review_id}>
-              <Link to={endpoint}>
-                <h3>{game.title}</h3>
-              </Link>
+    <ul id="gamesList">
+      {gamesList.map((game) => {
+        let endpoint = `/reviews/${game.review_id}`;
+        return (
+          <li key={game.review_id}>
+            <Link to={endpoint}>
+              <h3>{game.title}</h3>
+            </Link>
 
-              <img src={game.review_img_url} width="150px" height="150px" />
-            </li>
-          );
-        })}
-      </ul>
-    </>
+            <img src={game.review_img_url} width="150px" height="150px" />
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 

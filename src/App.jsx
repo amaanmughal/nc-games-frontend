@@ -10,7 +10,7 @@ function App() {
     <>
       <Nav />
       <Routes>
-        <Route path="/reviews" element={<GamesList />} />
+        <Route path="/" element={<GamesList />} />
         <Route path="/reviews/:review_id" element={<SingleGame />} />
       </Routes>
     </>

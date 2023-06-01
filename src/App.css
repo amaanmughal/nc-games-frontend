@@ -40,6 +40,35 @@ body {
   margin-top: 5px;
 }
 
+#nav-home a:link,
+#nav-users a:link,
+#nav-cat a:link {
+  color: white;
+  text-decoration: none;
+}
+
+#nav-home a:visited,
+#nav-users a:visited,
+#nav-cat a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+#nav-home a:hover,
+#nav-users a:hover,
+#nav-cat a:hover {
+  transition: 0.2s;
+  transition-timing-function: linear;
+  color: blueviolet;
+  text-decoration: none;
+}
+
+#nav-home a:active,
+#nav-users a:active,
+#nav-cat a:active {
+  text-decoration: none;
+}
+
 /*---- GAME LIST ----*/
 
 #gamesList {

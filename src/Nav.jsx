@@ -1,18 +1,26 @@
+import { Link } from "react-router-dom";
+
 function Nav() {
   return (
     <>
       <nav id="nav-bar">
         <ul id="nav-list">
           <li id="nav-home">
-            <h1>
-              The <span id="game">Game</span> Spot 🃏
-            </h1>
+            <Link to="/">
+              <h1>
+                The <span id="game">Game</span> Spot 🃏
+              </h1>
+            </Link>
           </li>
           <li id="nav-cat">
-            <p>Categories</p>
+            <Link>
+              <p>Categories</p>
+            </Link>
           </li>
           <li id="nav-users">
-            <p>Users</p>
+            <Link>
+              <p>Users</p>
+            </Link>
           </li>
         </ul>
       </nav>

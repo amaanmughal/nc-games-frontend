@@ -4,12 +4,14 @@ import { fetchSingleReview } from "./apis/api";
 
 function SingleGame() {
   const [singleReview, setSingleReview] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { review_id } = useParams();
 
   useEffect(() => {
     fetchSingleReview(review_id).then(({ review }) => {
       setSingleReview(review);
+      setIsLoading(false);
     });
   }, []);
 
@@ -19,6 +21,8 @@ function SingleGame() {
   let day = newDate.getDate();
   let month = newDate.getDay();
   let displayDate = `${day}/${month}/${year}`;
+
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <div id="single-card">

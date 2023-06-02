@@ -16,20 +16,21 @@ function GamesList() {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <ul id="gamesList">
-      {gamesList.map((game) => {
-        let endpoint = `/reviews/${game.review_id}`;
-        return (
-          <li key={game.review_id}>
-            <Link to={endpoint}>
-              <h3>{game.title}</h3>
-            </Link>
-
-            <img src={game.review_img_url} width="150px" height="150px" />
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <ul id="gamesList">
+        {gamesList.map((game) => {
+          let endpoint = `/reviews/${game.review_id}`;
+          return (
+            <li key={game.review_id}>
+              <Link to={endpoint}>
+                <h3>{game.title}</h3>
+              </Link>
+              <img src={game.review_img_url} width="150px" height="150px" />
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 }
 

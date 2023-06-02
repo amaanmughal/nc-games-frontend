@@ -1,33 +1,32 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchComments } from "./apis/api";
+import { fetchCommentsById } from "./apis/api";
+import createDate from "./components/date";
 
 function Comments() {
   const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { review_id } = useParams();
 
   useEffect(() => {
-    fetchComments(review_id).then(({ comments }) => {
+    fetchCommentsById(review_id).then(({ comments }) => {
       if (comments.length === 0) {
         setComments(["nothing"]);
+        setIsLoading(false);
       } else {
         setComments(comments);
+        setIsLoading(false);
       }
     });
   }, []);
+
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <>
       <h2 id="comments-title">Comments 💬</h2>
       <ul id="comments-list">
         {comments.map((obj) => {
-          let newDate = new Date(obj.created_at);
-
-          let year = newDate.getFullYear();
-          let day = newDate.getDate();
-          let month = newDate.getDay();
-          let displayDate = `${day}/${month}/${year}`;
-
           if (obj === "nothing") {
             return <p key="nothing">No comments</p>;
           }
@@ -35,7 +34,7 @@ function Comments() {
             <li key={obj.comment_id}>
               <h4>{obj.author}</h4>
               <p>{obj.body}</p>
-              <p>{displayDate}</p>
+              <p>{createDate(obj.created_at)}</p>
               <button className="single-button">👎</button>
               <button className="single-button">👍</button>
               <p>{obj.votes}</p>

@@ -6,27 +6,28 @@ import createDate from "./components/date";
 
 function SingleGame() {
   const [singleReview, setSingleReview] = useState([]);
+  const [votes, setVotes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const { review_id } = useParams();
 
   useEffect(() => {
     fetchSingleReview(review_id).then(({ review }) => {
+      setVotes(review.votes);
       setSingleReview(review);
       setIsLoading(false);
     });
   }, []);
 
-  // function createDate(currDate) {
-  //   let newDate = new Date(currDate);
-
-  //   let year = newDate.getFullYear();
-  //   let day = newDate.getDate();
-  //   let month = newDate.getDay();
-  //   return `${day}/${month}/${year}`;
-  // }
-
   if (isLoading) return <p>Loading...</p>;
+
+  function voteChangeUp() {
+    setVotes(votes + 1);
+  }
+
+  function voteChangeDown() {
+    setVotes(votes - 1);
+  }
 
   return (
     <>
@@ -48,10 +49,14 @@ function SingleGame() {
           created at: {createDate(singleReview.created_at)}
         </p>
         <p className="single-cat">category: {singleReview.category}</p>
-        <button className="single-button">👎</button>
-        <button className="single-button">👍</button>
+        <button className="single-button" onClick={voteChangeDown}>
+          👎
+        </button>
+        <button className="single-button" onClick={voteChangeUp}>
+          👍
+        </button>
         <p>
-          <strong>{singleReview.votes}</strong>
+          <strong>{votes}</strong>
         </p>
       </div>
       <Comments />

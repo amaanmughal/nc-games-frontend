@@ -4,12 +4,15 @@ import { fetchComments } from "./apis/api";
 
 function Comments() {
   const [comments, setComments] = useState([]);
-
   const { review_id } = useParams();
 
   useEffect(() => {
     fetchComments(review_id).then(({ comments }) => {
-      setComments(comments);
+      if (comments.length === 0) {
+        setComments(["nothing"]);
+      } else {
+        setComments(comments);
+      }
     });
   }, []);
 
@@ -25,6 +28,9 @@ function Comments() {
           let month = newDate.getDay();
           let displayDate = `${day}/${month}/${year}`;
 
+          if (obj === "nothing") {
+            return <p key="nothing">No comments</p>;
+          }
           return (
             <li key={obj.comment_id}>
               <h4>{obj.author}</h4>

@@ -6,14 +6,17 @@ import createDate from "./components/date";
 
 function SingleGame() {
   const [singleReview, setSingleReview] = useState([]);
-  const [votes, setVotes] = useState([]);
+  const [votesUp, setVotesUp] = useState([]);
+  const [votesDown, setVotesDown] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const { review_id } = useParams();
 
   useEffect(() => {
     fetchSingleReview(review_id).then(({ review }) => {
-      setVotes(review.votes);
+      review.votesDown = 0;
+      setVotesUp(review.votes);
+      setVotesDown(review.votesDown);
       setSingleReview(review);
       setIsLoading(false);
     });
@@ -22,11 +25,11 @@ function SingleGame() {
   if (isLoading) return <p>Loading...</p>;
 
   function voteChangeUp() {
-    setVotes(votes + 1);
+    setVotesUp(votesUp + 1);
   }
 
   function voteChangeDown() {
-    setVotes(votes - 1);
+    setVotesDown(votesDown + 1);
   }
 
   return (
@@ -56,7 +59,10 @@ function SingleGame() {
           👍
         </button>
         <p>
-          <strong>{votes}</strong>
+          <strong className="votes-up">{votesUp}</strong>
+        </p>
+        <p>
+          <strong className="votes-down">{votesDown}</strong>
         </p>
       </div>
       <Comments />

@@ -6,27 +6,31 @@ import createDate from "./components/date";
 
 function SingleGame() {
   const [singleReview, setSingleReview] = useState([]);
+  const [votesUp, setVotesUp] = useState([]);
+  const [votesDown, setVotesDown] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const { review_id } = useParams();
 
   useEffect(() => {
     fetchSingleReview(review_id).then(({ review }) => {
+      review.votesDown = 0;
+      setVotesUp(review.votes);
+      setVotesDown(review.votesDown);
       setSingleReview(review);
       setIsLoading(false);
     });
   }, []);
 
-  // function createDate(currDate) {
-  //   let newDate = new Date(currDate);
-
-  //   let year = newDate.getFullYear();
-  //   let day = newDate.getDate();
-  //   let month = newDate.getDay();
-  //   return `${day}/${month}/${year}`;
-  // }
-
   if (isLoading) return <p>Loading...</p>;
+
+  function voteChangeUp() {
+    setVotesUp(votesUp + 1);
+  }
+
+  function voteChangeDown() {
+    setVotesDown(votesDown + 1);
+  }
 
   return (
     <>
@@ -48,11 +52,22 @@ function SingleGame() {
           created at: {createDate(singleReview.created_at)}
         </p>
         <p className="single-cat">category: {singleReview.category}</p>
-        <button className="single-button">👎</button>
-        <button className="single-button">👍</button>
-        <p>
-          <strong>{singleReview.votes}</strong>
-        </p>
+        <div className="thumbs-up">
+          <button className="single-button" onClick={voteChangeUp}>
+            👍
+          </button>
+          <p>
+            <strong className="votes-up">{votesUp}</strong>
+          </p>
+        </div>
+        <div className="thumbs-down">
+          <button className="single-button" onClick={voteChangeDown}>
+            👎
+          </button>
+          <p>
+            <strong className="votes-down">{votesDown}</strong>
+          </p>
+        </div>
       </div>
       <Comments />
     </>

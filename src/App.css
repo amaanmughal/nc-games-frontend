@@ -122,7 +122,8 @@ body {
 }
 
 .single-button {
-  width: 30px;
+  /* width: 30px; */
+  padding: 10px;
   justify-self: center;
 }
 
@@ -145,8 +146,21 @@ body {
   border-radius: 40px;
 }
 
+.single-review {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
 .votes-up {
   color: green;
+}
+
+.thumbs-up,
+.thumbs-down {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .votes-down {

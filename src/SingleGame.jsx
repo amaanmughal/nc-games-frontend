@@ -52,18 +52,22 @@ function SingleGame() {
           created at: {createDate(singleReview.created_at)}
         </p>
         <p className="single-cat">category: {singleReview.category}</p>
-        <button className="single-button" onClick={voteChangeDown}>
-          👎
-        </button>
-        <button className="single-button" onClick={voteChangeUp}>
-          👍
-        </button>
-        <p>
-          <strong className="votes-up">{votesUp}</strong>
-        </p>
-        <p>
-          <strong className="votes-down">{votesDown}</strong>
-        </p>
+        <div className="thumbs-up">
+          <button className="single-button" onClick={voteChangeUp}>
+            👍
+          </button>
+          <p>
+            <strong className="votes-up">{votesUp}</strong>
+          </p>
+        </div>
+        <div className="thumbs-down">
+          <button className="single-button" onClick={voteChangeDown}>
+            👎
+          </button>
+          <p>
+            <strong className="votes-down">{votesDown}</strong>
+          </p>
+        </div>
       </div>
       <Comments />
     </>
